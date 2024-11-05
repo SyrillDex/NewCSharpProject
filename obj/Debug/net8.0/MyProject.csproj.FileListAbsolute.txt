@@ -12,3 +12,4 @@ C:\Users\LENOVO\source\repos\MyProject\MyProject\obj\Debug\net8.0\refint\MyProje
 C:\Users\LENOVO\source\repos\MyProject\MyProject\obj\Debug\net8.0\MyProject.pdb
 C:\Users\LENOVO\source\repos\MyProject\MyProject\obj\Debug\net8.0\MyProject.genruntimeconfig.cache
 C:\Users\LENOVO\source\repos\MyProject\MyProject\obj\Debug\net8.0\ref\MyProject.dll
+C:\Users\LENOVO\source\repos\MyProject\MyProject\obj\Debug\net8.0\MyProject.sourcelink.json

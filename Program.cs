@@ -8,47 +8,83 @@ namespace MyProject
         {
 
             Random rnd = new Random();
-            int guesses;
-            int answer;
-            int number;
-            int min = 1;
-            int max = 100;
+            string player;
+            string computer;
             bool playAgain = true;
-            String response;
 
             while (playAgain)
             {
-                answer = 0;
-                guesses = 0;
-                number = rnd.Next(min, max + 1);
-                response = "";
+                player = "";
+                computer = "";
 
-                while(answer != number)
+                while (player != "ROCK" && player != "PAPER" && player != "SCISSORS")
                 {
-                    Console.Write("Guess a number from " + min + " - " + max + " : ");
-                    answer = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Guess : " + answer);
-
-                    if(answer > number)
-                    {
-                        Console.WriteLine(" Hint : Lower!");
-                    }
-                    else if (answer < number)
-                    {
-                        Console.WriteLine(" Hint : Higher");
-                        
-                    }
+                    Console.Write("Please Choose ROCK, PAPER, or SCISSORS: ");
+                    player = Console.ReadLine().ToUpper();
                     Console.WriteLine();
-                    guesses++;
+                }
+                switch(rnd.Next(1,4))
+                {
+                    case 1:
+                        computer = "ROCK";
+                        break;
+                    case 2:
+                        computer = "PAPER";
+                        break;
+                    case 3:
+                        computer = "SCISSORS";
+                        break;
+                }
+                Console.WriteLine("Player: " + player);
+                Console.WriteLine("Computer: " + computer);
+                switch (player)
+                {
+                    case "ROCK":
+                        if (computer == "ROCK")
+                        {
+                            Console.WriteLine("Its a TIE");
+                        }
+                        else if(computer == "PAPER")
+                        {
+                            Console.WriteLine("YOU LOSE");
+                        }
+                        else
+                        {
+                            Console.WriteLine("YOU WIN");
+                        }
+                        break;
+                    case "PAPER":
+                        if (computer == "ROCK")
+                        {
+                            Console.WriteLine("YOU WIN");
+                        }
+                        else if (computer == "PAPER")
+                        {
+                            Console.WriteLine("Its a TIE");
+                        }
+                        else
+                        {
+                            Console.WriteLine("YOU LOSE");
+                        }
+                        break;
+                    case "SCISSORS":
+                        if (computer == "ROCK")
+                        {
+                            Console.WriteLine("YOU LOSE");
+                        }
+                        else if (computer == "PAPER")
+                        {
+                            Console.WriteLine("YOU WIN");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Its a TIE");
+                        }
+                        break;
                 }
                 Console.WriteLine();
-                Console.WriteLine("The correct answer is " + number);
-                Console.WriteLine("YOU WIN!!");
-                Console.WriteLine("Number of guesses: " + guesses);
-                Console.WriteLine();
-
                 Console.WriteLine("Would you like to play again? (Y/N)");
-                response = Console.ReadLine().ToUpper();
+                string response = Console.ReadLine().ToUpper();
                 Console.WriteLine();
 
                 if(response == "Y")
@@ -60,8 +96,7 @@ namespace MyProject
                     playAgain = false;
                 }
             }
-            Console.WriteLine("Thanks for playing");
-
+            Console.WriteLine("Thanks for Playing");
         }
     }
 }
