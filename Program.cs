@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Numerics;
+using System.Threading;
+
 
 namespace MyProject
 {
@@ -7,46 +8,31 @@ namespace MyProject
     {
         static void Main(string[] args)
         {
+            Thread mainThread = Thread.CurrentThread;
+            mainThread.Name = "main";
 
+            Thread thread1 = new Thread(() => countUp("timer 1"));
+            Thread thread2 = new Thread(() => countDown("timer 2"));
 
-            string op = "";
-
-            Console.Write("Enter first number: ");
-            double num1 = Convert.ToDouble(Console.ReadLine());
-
-            Console.Write("Enter second number: ");
-            double num2 = Convert.ToDouble(Console.ReadLine());
-
-            calculator(num1, num2, op);
-            
+            thread1.Start();
+            thread2.Start();
         }
-
-        static void calculator(double num1, double num2, string op)
+        public static void countUp(String name)
         {
-
-            while (op != "+" && op != "-" && op != "*" && op != "/")
+            for (int i = 0; i <= 10; i++)
             {
-                Console.Write("Choose if +, - , *, or /: ");
-                op = Console.ReadLine();
-                Console.WriteLine();
+                Console.WriteLine(name + " " + i);
+                Thread.Sleep(1000);
             }
-
-            Console.Write("The answer is: ");
-            switch (op)
+        }
+        public static void countDown(String name)
+        {
+            for (int i = 10; i >= 0; i--)
             {
-                case "+":
-                    Console.WriteLine(num1 + num2);
-                    break;
-                case "-":
-                    Console.WriteLine(num1 - num2);
-                    break;
-                case "*":
-                    Console.WriteLine(num1 * num2);
-                    break;
-                case "/":
-                    Console.WriteLine(num1 / num2);
-                    break;
+                Console.WriteLine(name + " " + i);
+                Thread.Sleep(1000);
             }
         }
     }
+   
 }
